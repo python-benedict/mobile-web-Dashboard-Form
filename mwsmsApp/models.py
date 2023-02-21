@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from .views import my_form
 # from twilio.rest import Client
 # import os
 
@@ -13,6 +15,7 @@ SLEPT_CHOICES = (
 )
 
 class MyModel(models.Model):
+    date = timezone.now()
     fullname = models.CharField(max_length=200)
     mobile_number = models.IntegerField()
     eaten = models.CharField(max_length=10, choices=EATEN_CHOICES, default='NO')
@@ -20,7 +23,7 @@ class MyModel(models.Model):
     content = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.fullname
+        return self.fullname + " - " + str(self.date)
 
     # def save(self, *args, **kwargs):
     #     if self.fullname:
