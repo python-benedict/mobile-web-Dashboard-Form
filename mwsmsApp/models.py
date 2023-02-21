@@ -2,9 +2,21 @@ from django.db import models
 # from twilio.rest import Client
 # import os
 
+EATEN_CHOICES = (
+    ("YES", "YES"),
+    ("NO", "NO"),
+)
+
+SLEPT_CHOICES = (
+    ("YES", "YES"),
+    ("NO", "NO"),
+)
+
 class MyModel(models.Model):
     fullname = models.CharField(max_length=200)
     mobile_number = models.IntegerField()
+    eaten = models.CharField(max_length=10, choices=EATEN_CHOICES, default='NO')
+    slept = models.CharField(max_length=10, choices=SLEPT_CHOICES, default='NO')
     content = models.CharField(max_length=200)
 
     def __str__(self):
