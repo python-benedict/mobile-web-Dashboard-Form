@@ -10,4 +10,4 @@ def my_form(request):
       form.save()
   else:
       form = MyForm()
-  return render(request, 'myapp/index.html', {'form': form})
+  return render(request, 'mwsmsApp/index.html', {'form': form})
