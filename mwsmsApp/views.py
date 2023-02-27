@@ -11,4 +11,4 @@ def my_form(request):
       return redirect('my_form')
   else:
       form = MyForm()
-  return render(request, 'mwsmsApp/index.html', {'form': form})
+  return render(request, 'mwsmsApp/home.html', {'form': form})
