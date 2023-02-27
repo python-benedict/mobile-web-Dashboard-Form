@@ -1,26 +1,37 @@
 from django.db import models
 from django.utils import timezone
-from .views import my_form
 # from twilio.rest import Client
 # import os
 
-EATEN_CHOICES = (
+CHOICES = (
     ("YES", "YES"),
     ("NO", "NO"),
 )
 
-SLEPT_CHOICES = (
-    ("YES", "YES"),
-    ("NO", "NO"),
-)
 
 class MyModel(models.Model):
     date = timezone.now()
-    fullname = models.CharField(max_length=200)
-    mobile_number = models.IntegerField()
-    eaten = models.CharField(max_length=10, choices=EATEN_CHOICES, default='NO')
-    slept = models.CharField(max_length=10, choices=SLEPT_CHOICES, default='NO')
-    content = models.CharField(max_length=200)
+    fullname = models.CharField(max_length=200, blank=True)
+    mobile_number = models.IntegerField(blank=True)
+    eaten = models.CharField(max_length=10, choices=CHOICES, default='NO', blank=True)
+    eaten_report = models.CharField(max_length=200, default="none", blank=True)
+    slept = models.CharField(max_length=10, choices=CHOICES, default='NO',blank=True)
+    slept_report = models.CharField(max_length=200, default="none", blank=True)
+    active = models.CharField(max_length=10, choices=CHOICES, default="NO", blank=True)
+    kid_fight = models.CharField(max_length=10, choices=CHOICES, default="NO", blank=True)
+    fight_report = models.CharField(max_length=200, default="none", blank=True)
+    health_problem = models.CharField(max_length=10, choices=CHOICES, default="NO", blank=True)
+    health_problem_report = models.CharField(max_length=200, default="none", blank=True)
+    toilet = models.CharField(max_length=10, choices=CHOICES, default="NO", blank=True)
+    toilet_report = models.CharField(max_length=200, default="none", blank=True)
+    class_participation = models.CharField(max_length=10, choices=CHOICES, default="NO", blank=True)
+    class_participation_report = models.CharField(max_length=200, default="none", blank=True)
+    kid_attitude = models.CharField(max_length=200, default="NONE", blank=True)
+    academic_performance = models.CharField(max_length=200, default="NONE", blank=True)
+    kid_interest = models.CharField(max_length=200, default="NONE", blank=True)
+    teacher_name = models.CharField(max_length=30, default="NONE", blank=True)
+    general_comment = models.CharField(max_length=300, default="NONE", blank=True)
+    
 
     def __str__(self):
         return self.fullname + " - " + str(self.date)
