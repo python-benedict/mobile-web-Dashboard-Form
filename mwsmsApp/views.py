@@ -12,3 +12,6 @@ def my_form(request):
   else:
       form = MyForm()
   return render(request, 'mwsmsApp/home.html', {'form': form})
+
+def index(request):
+   return render(request, 'mwsmsApp/index.html')
